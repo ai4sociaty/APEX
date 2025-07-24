@@ -1,4 +1,9 @@
-fastapi
-uvicorn
-pydantic
-# Add Flux/SDXL dependencies here
+fastapi==0.110.0
+uvicorn==0.29.0
+diffusers[torch]==0.28.2
+transformers==4.41.0
+accelerate==0.30.1
+torch==2.3.0
+pillow==10.3.0
+python-multipart==0.0.9
+xformers==0.0.26  # For memory-efficient attention
