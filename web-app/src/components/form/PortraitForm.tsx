@@ -6,7 +6,7 @@ import { Input } from '../ui/Input';
 import { Select } from '../ui/Select';
 import { Textarea } from '../ui/Textarea';
 import { Card } from '../ui/Card';
-import { FormData, ProfileData } from '../../types';
+import { FormData as FormDataType, ProfileData } from '../../types';
 import {
   purposeOptions,
   attireOptions,
@@ -30,7 +30,7 @@ import {
 import { formatJSON } from '../../utils';
 
 export const PortraitForm = () => {
-  const [formData, setFormData] = useState<FormData>(defaultFormValues);
+  const [formData, setFormData] = useState<FormDataType>(defaultFormValues);
   const [output, setOutput] = useState('');
   const [status, setStatus] = useState('');
   const [advancedPrompt, setAdvancedPrompt] = useState('');
@@ -39,7 +39,7 @@ export const PortraitForm = () => {
   const [jobId, setJobId] = useState<string | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
-  const updateField = useCallback((field: keyof FormData, value: any) => {
+  const updateField = useCallback((field: keyof FormDataType, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   }, []);
 
@@ -112,15 +112,33 @@ export const PortraitForm = () => {
 
       // --- API call to Job Manager service ---
       try {
-        const response = await axios.post('http://localhost:8000/jobs', {
+        // Create FormData to handle file upload
+        const formData_api = new FormData();
+        formData_api.append('profile_data', JSON.stringify({
+          ...profile,
           prompt: prompt,
           style: formData.resolution || 'portrait',
           seed: formData.seed || null
+        }));
+        
+        // Add reference photo if provided
+        if (formData.reference_photo) {
+          formData_api.append('reference_photo', formData.reference_photo);
+        }
+        
+        const response = await axios.post('http://localhost:8000/jobs', formData_api, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
         });
-        if (response.data && response.data.job_id) {
-          setJobId(response.data.job_id);
-          setStatus(prev => prev + ` | 🖼️ Job submitted: ${response.data.job_id}`);
-          // imageUrl will be set after job is processed by backend
+        
+        if (response.data && (response.data as any).job_id) {
+          setJobId((response.data as any).job_id);
+          let message = ` | 🖼️ Job submitted: ${(response.data as any).job_id}`;
+          if ((response.data as any).reference_photo_url) {
+            message += ` | 📸 Photo uploaded: ${(response.data as any).reference_photo_url}`;
+          }
+          setStatus(prev => prev + message);
         } else {
           setStatus(prev => prev + ' | ⚠️ No job returned');
         }

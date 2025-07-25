@@ -1,0 +1,161 @@
+{
+  "export_timestamp": "2025-07-25T01:29:47.663471",
+  "total_jobs": 2,
+  "total_profiles": 2,
+  "jobs": [
+    {
+      "job_id": "b45d7fae-2b12-4c66-bbb6-05bc6b726ba3",
+      "prompt": "Professional portrait for personal branding, wearing creative professional, with creative space background, conveying a creative vibe, using professional flash, with professional mood. Additional details: Artistic and creative professional portrait showcasing personality and creativity.. High-quality, professional photography, sharp focus, natural skin texture, proper lighting, photorealistic.",
+      "style": "1024x1024 (Standard)",
+      "seed": null,
+      "status": "pending",
+      "image_url": null,
+      "reference_photo_url": "http://localhost:8000/uploads/b45d7fae-2b12-4c66-bbb6-05bc6b726ba3_reference.jpeg",
+      "reference_photo_path": "uploads/b45d7fae-2b12-4c66-bbb6-05bc6b726ba3_reference.jpeg",
+      "profile_data": {
+        "basic_info": {
+          "purpose": "Personal Branding",
+          "attire": "Creative Professional",
+          "background": "Creative Space",
+          "vibe": "Creative"
+        },
+        "advanced_settings": {
+          "lighting": "Professional Flash",
+          "mood": "Professional",
+          "age_range": "Not Specified",
+          "gender": "Not Specified",
+          "ethnicity": "Not Specified",
+          "resolution": "1024x1024 (Standard)"
+        },
+        "additional_info": {
+          "reference_photo": "1752746981211.jpeg",
+          "custom_notes": "Artistic and creative professional portrait showcasing personality and creativity.",
+          "preset_used": "Creative Portfolio"
+        },
+        "metadata": {
+          "timestamp": "7/25/2025, 3:03:27 AM",
+          "version": "2.0",
+          "created_by": "APEX Portrait Generator (Web)"
+        },
+        "generated_prompt": "Professional portrait for personal branding, wearing creative professional, with creative space background, conveying a creative vibe, using professional flash, with professional mood. Additional details: Artistic and creative professional portrait showcasing personality and creativity.. High-quality, professional photography, sharp focus, natural skin texture, proper lighting, photorealistic.",
+        "prompt": "Professional portrait for personal branding, wearing creative professional, with creative space background, conveying a creative vibe, using professional flash, with professional mood. Additional details: Artistic and creative professional portrait showcasing personality and creativity.. High-quality, professional photography, sharp focus, natural skin texture, proper lighting, photorealistic.",
+        "style": "1024x1024 (Standard)",
+        "seed": null
+      },
+      "created_at": "2025-07-25 01:03:28.026000",
+      "updated_at": "2025-07-25 01:03:28.026000"
+    },
+    {
+      "job_id": "6e762d45-e1b4-4d9c-8048-85615be1e5ce",
+      "prompt": "Professional portrait for personal branding, wearing creative professional, with creative space background, conveying a creative vibe, using professional flash, with professional mood. Additional details: Artistic and creative professional portrait showcasing personality and creativity.. High-quality, professional photography, sharp focus, natural skin texture, proper lighting, photorealistic.",
+      "style": "1024x1024 (Standard)",
+      "seed": null,
+      "status": "pending",
+      "image_url": null,
+      "reference_photo_url": "http://localhost:8000/uploads/6e762d45-e1b4-4d9c-8048-85615be1e5ce_reference.jpeg",
+      "reference_photo_path": "uploads/6e762d45-e1b4-4d9c-8048-85615be1e5ce_reference.jpeg",
+      "profile_data": {
+        "basic_info": {
+          "purpose": "Personal Branding",
+          "attire": "Creative Professional",
+          "background": "Creative Space",
+          "vibe": "Creative"
+        },
+        "advanced_settings": {
+          "lighting": "Professional Flash",
+          "mood": "Professional",
+          "age_range": "Not Specified",
+          "gender": "Not Specified",
+          "ethnicity": "Not Specified",
+          "resolution": "1024x1024 (Standard)"
+        },
+        "additional_info": {
+          "reference_photo": "1752746981211.jpeg",
+          "custom_notes": "Artistic and creative professional portrait showcasing personality and creativity.",
+          "preset_used": "Creative Portfolio"
+        },
+        "metadata": {
+          "timestamp": "7/25/2025, 3:04:17 AM",
+          "version": "2.0",
+          "created_by": "APEX Portrait Generator (Web)"
+        },
+        "generated_prompt": "Professional portrait for personal branding, wearing creative professional, with creative space background, conveying a creative vibe, using professional flash, with professional mood. Additional details: Artistic and creative professional portrait showcasing personality and creativity.. High-quality, professional photography, sharp focus, natural skin texture, proper lighting, photorealistic.",
+        "prompt": "Professional portrait for personal branding, wearing creative professional, with creative space background, conveying a creative vibe, using professional flash, with professional mood. Additional details: Artistic and creative professional portrait showcasing personality and creativity.. High-quality, professional photography, sharp focus, natural skin texture, proper lighting, photorealistic.",
+        "style": "1024x1024 (Standard)",
+        "seed": null
+      },
+      "created_at": "2025-07-25 01:04:19.620000",
+      "updated_at": "2025-07-25 01:04:19.620000"
+    }
+  ],
+  "profiles": [
+    {
+      "job_id": "b45d7fae-2b12-4c66-bbb6-05bc6b726ba3",
+      "profile_data": {
+        "basic_info": {
+          "purpose": "Personal Branding",
+          "attire": "Creative Professional",
+          "background": "Creative Space",
+          "vibe": "Creative"
+        },
+        "advanced_settings": {
+          "lighting": "Professional Flash",
+          "mood": "Professional",
+          "age_range": "Not Specified",
+          "gender": "Not Specified",
+          "ethnicity": "Not Specified",
+          "resolution": "1024x1024 (Standard)"
+        },
+        "additional_info": {
+          "reference_photo": "1752746981211.jpeg",
+          "custom_notes": "Artistic and creative professional portrait showcasing personality and creativity.",
+          "preset_used": "Creative Portfolio"
+        },
+        "metadata": {
+          "timestamp": "7/25/2025, 3:03:27 AM",
+          "version": "2.0",
+          "created_by": "APEX Portrait Generator (Web)"
+        },
+        "generated_prompt": "Professional portrait for personal branding, wearing creative professional, with creative space background, conveying a creative vibe, using professional flash, with professional mood. Additional details: Artistic and creative professional portrait showcasing personality and creativity.. High-quality, professional photography, sharp focus, natural skin texture, proper lighting, photorealistic.",
+        "prompt": "Professional portrait for personal branding, wearing creative professional, with creative space background, conveying a creative vibe, using professional flash, with professional mood. Additional details: Artistic and creative professional portrait showcasing personality and creativity.. High-quality, professional photography, sharp focus, natural skin texture, proper lighting, photorealistic.",
+        "style": "1024x1024 (Standard)",
+        "seed": null
+      },
+      "created_at": "2025-07-25 01:03:28.038000"
+    },
+    {
+      "job_id": "6e762d45-e1b4-4d9c-8048-85615be1e5ce",
+      "profile_data": {
+        "basic_info": {
+          "purpose": "Personal Branding",
+          "attire": "Creative Professional",
+          "background": "Creative Space",
+          "vibe": "Creative"
+        },
+        "advanced_settings": {
+          "lighting": "Professional Flash",
+          "mood": "Professional",
+          "age_range": "Not Specified",
+          "gender": "Not Specified",
+          "ethnicity": "Not Specified",
+          "resolution": "1024x1024 (Standard)"
+        },
+        "additional_info": {
+          "reference_photo": "1752746981211.jpeg",
+          "custom_notes": "Artistic and creative professional portrait showcasing personality and creativity.",
+          "preset_used": "Creative Portfolio"
+        },
+        "metadata": {
+          "timestamp": "7/25/2025, 3:04:17 AM",
+          "version": "2.0",
+          "created_by": "APEX Portrait Generator (Web)"
+        },
+        "generated_prompt": "Professional portrait for personal branding, wearing creative professional, with creative space background, conveying a creative vibe, using professional flash, with professional mood. Additional details: Artistic and creative professional portrait showcasing personality and creativity.. High-quality, professional photography, sharp focus, natural skin texture, proper lighting, photorealistic.",
+        "prompt": "Professional portrait for personal branding, wearing creative professional, with creative space background, conveying a creative vibe, using professional flash, with professional mood. Additional details: Artistic and creative professional portrait showcasing personality and creativity.. High-quality, professional photography, sharp focus, natural skin texture, proper lighting, photorealistic.",
+        "style": "1024x1024 (Standard)",
+        "seed": null
+      },
+      "created_at": "2025-07-25 01:04:19.622000"
+    }
+  ]
+}
