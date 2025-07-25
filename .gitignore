@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+.venv/
+.pytest_cache/
+
+# Node.js
+node_modules/
+npm-debug.log*
+.npm
+
+# Environment variables
+.env
+.env.local
+
+# Database
+*.db
+*.sqlite3
+
+# Uploads and generated files
+backend/job_manager/uploads/
+backend/job_manager/generated/
+data/profiles/*.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Installer files
+*.deb
+*.rpm
+*.dmg
+*.exe
+*.msi
