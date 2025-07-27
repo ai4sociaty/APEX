@@ -318,6 +318,81 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - The open-source AI community for inspiration and tools
 - React and Node.js communities for frontend tools
 
+
+```text
+┌────────┐       ┌──────────────┐       ┌────────┐       ┌──────────────┐       ┌───────────────┐
+│ User   │       │ FastAPI      │       │ MongoDB│       │ vLLM Server  │       │ FluxKontext   │
+│        │       │ Backend      │       │        │       │ (QwenVL)     │       │ Server        │
+└───┬────┘       └──────┬───────┘       └───┬────┘       └──────┬───────┘       └───────┬───────┘
+    │ 1. POST /jobs     │                   │                   │                       │
+    │ (image + params)  │                   │                   │                       │
+    │──────────────────>│                   │                   │                       │
+    │                   │ 2. Create job     │                   │                       │
+    │                   │ record (PENDING)  │                   │                       │
+    │                   │──────────────────>│                   │                       │
+    │                   │                   │                   │                       │
+    │                   │ 3. For attempt in │                   │                       │
+    │                   │ 1..3:             │                   │                       │
+    │                   │                   │                   │                       │
+    │                   │ 4. Request prompt │                   │                       │
+    │                   │ (image + params)  │                   │                       │
+    │                   │──────────────────────────────────────>│                       │
+    │                   │                   │                   │                       │
+    │                   │ 5. Receive prompt │                   │                       │
+    │                   │<──────────────────────────────────────│                       │
+    │                   │                   │                   │                       │
+    │                   │ 6. Store prompt   │                   │                       │
+    │                   │ in DB             │                   │                       │
+    │                   │──────────────────>│                   │                       │
+    │                   │                   │                   │                       │
+    │                   │ 7. Request image  │                   │                       │
+    │                   │ (prompt + image)  │                   │                       │
+    │                   │───────────────────────────────────────────────────────────────>│
+    │                   │                   │                   │                       │
+    │                   │ 8. Receive image  │                   │                       │
+    │                   │<───────────────────────────────────────────────────────────────│
+    │                   │                   │                   │                       │
+    │                   │ 9. Store image    │                   │                       │
+    │                   │ in DB             │                   │                       │
+    │                   │──────────────────>│                   │                       │
+    │                   │                   │                   │                       │
+    │                   │ 10. Validate      │                   │                       │
+    │                   │ (orig+gen images, │                   │                       │
+    │                   │  params, conds)   │                   │                       │
+    │                   │──────────────────────────────────────>│                       │
+    │                   │                   │                   │                       │
+    │                   │ 11a. If OK:       │                   │                       │
+    │                   │<──────────────────────────────────────│                       │
+    │                   │ 11b. Else:        │                   │                       │
+    │                   │ Tuned prompt      │                   │                       │
+    │                   │<──────────────────────────────────────│                       │
+    │                   │                   │                   │                       │
+    │                   │ 12. If valid OR   │                   │                       │
+    │                   │ max attempts:     │                   │                       │
+    │                   │ Break loop        │                   │                       │
+    │                   │                   │                   │                       │
+    │                   │ 13. If success:   │                   │                       │
+    │                   │ Return final image│                   │                       │
+    │                   │<───────────────────                   │                       │
+    │                   │                   │                   │                       │
+    │                   │ 14. If failed:    │                   │                       │
+    │                   │ Get all images    │                   │                       │
+    │                   │──────────────────>│                   │                       │
+    │                   │                   │                   │                       │
+    │                   │ 15. Request report│                   │                       │
+    │                   │──────────────────────────────────────>│                       │
+    │                   │                   │                   │                       │
+    │                   │ 16. Receive report│                   │                       │
+    │                   │<──────────────────────────────────────│                       │
+    │                   │                   │                   │                       │
+    │                   │ 17. Return images │                   │                       │
+    │                   │ + report          │                   │                       │
+    │<───────────────────                   │                   │                       │
+
+```
+
+
+
 ---
 
 **Made with ❤️ for creating perfect professional portraits**
