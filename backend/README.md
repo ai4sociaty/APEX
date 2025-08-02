@@ -4,16 +4,13 @@ This backend consists of two main components:
 
 ## 1. vLLM Server
 - **Purpose:** Fast LLM inference
-- **Tech:** FastAPI, vLLM
+- **Tech:** vLLM
 - **Endpoints:**
-  - `GET /health` — Health check
-  - `POST /generate` — Generate LLM output
+  - `OpenAI` compatible server  t
 - **Run:**
   ```bash
   cd vllm_server
-  pip install -r requirements.txt
-  python main.py
-  # Or: uvicorn main:app --host 0.0.0.0 --port 8001
+  bash servevlm.sh 
   ```
 
 ## 2. Flux Server
