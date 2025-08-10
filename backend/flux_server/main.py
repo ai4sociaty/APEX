@@ -1,6 +1,6 @@
 import torch
 from fastapi import FastAPI, File, UploadFile, Form, HTTPException
-from fastapi.responses import Response
+from fastapi.responses import Response, JSONResponse
 from fastapi.concurrency import run_in_threadpool
 from diffusers import FluxKontextPipeline
 from diffusers.utils import load_image
@@ -63,29 +63,24 @@ def generate_image(input_image: Image.Image, prompt: str, guidance_scale: float)
             raise HTTPException(500, "GPU memory overflow - try smaller image")
         raise
 
-@app.post("/generate", response_class=Response)
+
+import base64
+
+@app.post("/generate", response_class=JSONResponse)
 async def generate_image_endpoint(
-    prompt: str = Form(..., description="Text prompt for image editing", example="Add a hat to the cat"),
-    guidance_scale: float = Form(2.5, description="Guidance scale (1.0-20.0)", example=2.5),
+    prompt: str = Form(..., description="Text prompt for image generation"),
+    job_id: str = Form(None, description="Job ID for tracking"),
     image_file: UploadFile = File(None, description="Image file (PNG/JPEG)"),
-    image_url: str = Form(None, description="Image URL", example="https://example.com/cat.png")
-) -> Response:
+    image_url: str = Form(None, description="Image URL")
+) -> JSONResponse:
     """
-    Generate edited image based on input image and text prompt
-    
-    - **prompt**: Text instruction for image editing (required)
-    - **guidance_scale**: Controls creativity vs prompt adherence (default 2.5)
-    - **image_file**: Upload image file (either file or URL required)
-    - **image_url**: Fetch image from URL (either file or URL required)
-    
-    Returns: PNG image with edits applied
+    Generate an image from a prompt and an input image (file upload or URL).
+    Returns: JSON with job_id and base64-encoded PNG image.
     """
-    # Validate inputs
     if not image_file and not image_url:
         raise HTTPException(400, "Either image_file or image_url required")
     if image_file and image_url:
         raise HTTPException(400, "Use only one image source (file or URL)")
-
     try:
         # Load input image
         if image_file:
@@ -94,26 +89,24 @@ async def generate_image_endpoint(
             input_image = Image.open(io.BytesIO(await image_file.read()))
         else:
             input_image = load_image(image_url)
-        
         # Validate image dimensions
         if max(input_image.size) > 2048:
             raise HTTPException(400, "Image dimensions too large (max 2048px)")
         if min(input_image.size) < 64:
             raise HTTPException(400, "Image dimensions too small (min 64px)")
-
         # Process image using thread pool
         output_image = await run_in_threadpool(
             generate_image,
             input_image,
             prompt,
-            guidance_scale
+            2.5  # Default guidance scale
         )
-
-        # Return PNG image
+        # Return PNG image as base64 in JSON
         img_bytes = io.BytesIO()
         output_image.save(img_bytes, format="PNG")
-        return Response(content=img_bytes.getvalue(), media_type="image/png")
-
+        img_bytes.seek(0)
+        img_b64 = base64.b64encode(img_bytes.read()).decode("utf-8")
+        return {"job_id": job_id, "image_base64": img_b64}
     except HTTPException:
         raise
     except Exception as e:
