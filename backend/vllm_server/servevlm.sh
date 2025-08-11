@@ -1,9 +1,4 @@
 #!/bin/bash
-#
-# vLLM Model Server Launcher
-# Usage: ./servevlm.sh MODEL PORT API_KEY [MAX_SEQ_LENGTH] [GPU_UTIL]
-# Example: ./servevlm.sh HuggingFaceTB/SmolVLM2-2.2B-Instruct 12000 mykey 36000 0.6
-
 MODEL=${1:-HuggingFaceTB/SmolVLM2-2.2B-Instruct}
 PORT=${2:-12000}
 API_KEY=${3:-your_api_key}
@@ -16,10 +11,9 @@ if [ -z "$MODEL" ] || [ -z "$PORT" ] || [ -z "$API_KEY" ]; then
   exit 1
 fi
 
-echo "Launching vLLM server with:"
+echo "🚀 Launching vLLM server:"
 echo "  Model: $MODEL"
 echo "  Port: $PORT"
-echo "  API Key: $API_KEY"
 echo "  Max Seq Length: $MAX_SEQ_LENGTH"
 echo "  GPU Utilization: $GPU_UTIL"
 
@@ -33,4 +27,3 @@ vllm serve \
     --trust-remote-code \
     --max-batch-size 1 \
     --max-sequence-length "$MAX_SEQ_LENGTH"
-    
